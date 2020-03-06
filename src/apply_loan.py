@@ -4,6 +4,7 @@ created_on: 5th March 2020
 """
 import os
 import sys
+import traceback
 # Appending PYTHONPATH
 PYTHON_PATH = os.getcwd()  + "/.."
 sys.path.append(PYTHON_PATH)
@@ -51,7 +52,8 @@ class LoanApplication(object):
         """
         self.aadhar = input("Please enter your AADHAR number :: ")
         self.loan_amount = input("Please enter the loan amount :: ")
-        self.loan_tenure = input("Please enter the loan tenure :: ")
+        loan_tenure = input("Please enter the loan tenure :: ")
+        self.loan_tenure = int(loan_tenure)
         self.get_land_coordinates()
 
     def get_land_coordinates(self):
@@ -116,8 +118,11 @@ if __name__ == "__main__":
     try:
         loan_app_obj = LoanApplication()
         loan_app_obj.get_application()
-        loan_app_obj.print_application()
+        # loan_app_obj.print_application()
         application_details = ProcessLoan(loan_app_obj).process_loan()
+        print("-------------------------------------Applicaion Response-------------------------------------")
         pp(application_details)
+        print("---------------------------------------------------------------------------------------------")
     except Exception:
+        traceback.print_exc()
         print("Exception occured")

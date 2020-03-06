@@ -16,7 +16,7 @@ MAX_LOAN_AMOUNT = 25000
 # Maximum Loan tenure in months
 MAX_LOAN_TENURE = 6
 # Maximum Land value percentage eligible for loan
-MAX_LAND_VALUE_WEIGHTAGE = .4
+MAX_LAND_VALUE_WEIGHTAGE = 0.4
 # LOAN RISK SCORE
 LOAN_RISK_SCORE = 500
 # MIN NVDI, CRA and LC_SCORE
