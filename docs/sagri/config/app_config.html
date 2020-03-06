@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>app_config.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>app_config.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>author: rs
+5th March 2020</p>
+<p>Weight of Rule Engine segments
+Cummulative weigthage should not cross 1</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="n">RULE_ENGINE_WEIGHTAGE</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="s2">&quot;NDVI_WGT&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># Based on NDVI of land</span>
+                            <span class="s2">&quot;CRA_WGT&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>  <span class="c1"># Credit Rating Agencies (CIBIL, Experain, etc)</span>
+                            <span class="s2">&quot;LCR_WGT&quot;</span><span class="p">:</span> <span class="mf">0.4</span>  <span class="c1"># Local credit rating based on past loan performance</span>
+                        <span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Land value per cent in rupees</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">LAND_VAL_PER_CENT</span> <span class="o">=</span> <span class="mi">100</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Maximum loan amount in rupees</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">MAX_LOAN_AMOUNT</span> <span class="o">=</span> <span class="mi">25000</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Maximum Loan tenure in months</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">MAX_LOAN_TENURE</span> <span class="o">=</span> <span class="mi">6</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Maximum Land value percentage eligible for loan</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">MAX_LAND_VALUE_WEIGHTAGE</span> <span class="o">=</span> <span class="o">.</span><span class="mi">4</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>LOAN RISK SCORE</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">LOAN_RISK_SCORE</span> <span class="o">=</span> <span class="mi">500</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>MIN NVDI, CRA and LC_SCORE</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">MIN_NVDI_SCORE</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">MIN_CRA_SCORE</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">MIN_LCR_SCORE</span> <span class="o">=</span> <span class="mi">100</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

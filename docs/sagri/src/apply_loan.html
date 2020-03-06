@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>apply_loan.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>apply_loan.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>author: rs
+5th March 2020</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>Appending PYTHONPATH</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="n">PYTHON_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>  <span class="o">+</span> <span class="s2">&quot;/..&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PYTHON_PATH</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">src.process_loan</span> <span class="kn">import</span> <span class="n">ProcessLoan</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span> <span class="k">as</span> <span class="n">pp</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>This class has all the attributes to collect application details</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">LoanApplication</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Details to be collected are as follows:
+    aadhar - Applcation UID
+    loan_amount - Loan Amount
+    loan_tenure - Loan repayment tenure
+    land_coordinates - Loan coordinates of the farm as a list of tuple in decimal degrees metric</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loan_amount</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loan_tenure</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span> <span class="o">=</span> <span class="p">[]</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>self.aadhar = 123
+self.loan_amount = 10000
+self.loan_tenure = 6
+self.land_coordinates = [(12.685249, 77.874669),
+                         (12.685102, 77.875160),
+                         (12.685515, 77.875310),
+                         (12.685672, 77.874819)
+                         ]</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>This method used to print the application details
+:return: None</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">print_application</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">loan_details</span> <span class="o">=</span> <span class="s2">&quot;Aadhar :: </span><span class="si">{}</span><span class="s2"> Loan Amount :: </span><span class="si">{}</span><span class="s2"> Loan Tenure :: </span><span class="si">{}</span><span class="s2"> Land_coordinates :: </span><span class="si">{}</span><span class="s2">&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">loan_details</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loan_amount</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loan_tenure</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span><span class="p">))</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>This is the entry point from where the application details are collected
+:return: None</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_application</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter your AADHAR number :: &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loan_amount</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter the loan amount :: &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loan_tenure</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter the loan tenure :: &quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_land_coordinates</span><span class="p">()</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>This is used to get the farm land coordinates
+Coordinates should be of the format &ldquo;12.3445434, 77.1232131&rdquo;
+    It should not contain only decimal values
+Minimum of 3 coordinates should be entered
+:return:</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_land_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">loop_flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">while</span> <span class="n">loop_flag</span><span class="p">:</span>
+            <span class="n">land_coordinates</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter your land coordinates in decimal lat long&quot;</span>\
+                                     <span class="s2">&quot;format [eg: 12.6952305,77.88333] :: &quot;</span><span class="p">)</span>
+            <span class="n">formatted_coord</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_land_coordinates</span><span class="p">(</span><span class="n">land_coordinates</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">formatted_coord</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted_coord</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Prompting loan applicant to decide if he wants to enter more coordinates</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>            <span class="n">get_land_coordinates</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Press any key other than N to continue entering your land coordinates :: &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">get_land_coordinates</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+                <span class="n">loop_flag</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">no_of_coordinates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>To check if minimum of 3 coordinates are entered</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>                <span class="k">if</span> <span class="n">no_of_coordinates</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimum of 3 sets of coordinates are required.</span><span class="se">\n</span><span class="s2">You have entered only </span><span class="si">{}</span><span class="s2"> coordinates&quot;</span>
+                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">no_of_coordinates</span><span class="p">))</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>Prompting loan applicant to decide if he wants to enter more coordinates</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>                    <span class="n">quit_application</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Press any key other than N to continue entering your land coordinates, &quot;</span>\
+                                             <span class="s2">&quot;otherwise your loan application will be discarded :: &quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">quit_application</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;n&quot;</span><span class="p">:</span>
+                        <span class="n">loop_flag</span> <span class="o">=</span> <span class="kc">True</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>Converting string format coordinates to decimal degrees
+This validates if the entered coordinates are inthe expected format
+:param coord:
+:return:</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">format_land_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">formatted_coord</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">coord</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have entered Invalid value for coordinates.</span><span class="se">\n</span><span class="s2">Entered data is discarded.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="n">formatted_coord</span> <span class="o">+=</span> <span class="p">(</span><span class="n">val</span><span class="p">,)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have entered Invalid value for coordinates.</span><span class="se">\n</span><span class="s2">Entered data is discarded.&quot;</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      <p>If If more than one comma is there, print Invalid value</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">formatted_coord</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-18'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-18'>#</a>
+      </div>
+      <p>Raise Exception</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have entered Invalid value for coordinates.</span><span class="se">\n</span><span class="s2">Entered data is discarded.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">formatted_coord</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have entered Invalid value for coordinates.</span><span class="se">\n</span><span class="s2">Entered data is discarded.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">formatted_coord</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">formatted_coord</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">loan_app_obj</span> <span class="o">=</span> <span class="n">LoanApplication</span><span class="p">()</span>
+        <span class="n">loan_app_obj</span><span class="o">.</span><span class="n">get_application</span><span class="p">()</span>
+        <span class="n">loan_app_obj</span><span class="o">.</span><span class="n">print_application</span><span class="p">()</span>
+        <span class="n">application_details</span> <span class="o">=</span> <span class="n">ProcessLoan</span><span class="p">(</span><span class="n">loan_app_obj</span><span class="p">)</span><span class="o">.</span><span class="n">process_loan</span><span class="p">()</span>
+        <span class="n">pp</span><span class="p">(</span><span class="n">application_details</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception occured&quot;</span><span class="p">)</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

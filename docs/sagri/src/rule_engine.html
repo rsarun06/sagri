@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>rule_engine.py</title>
+  <link rel="stylesheet" href="../../pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>rule_engine.py</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>author: rs
+5th March 2020</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils.mock_credit_score</span> <span class="kn">import</span> <span class="n">mock_cra_score</span><span class="p">,</span> <span class="n">mock_lcr_score</span>
+<span class="kn">from</span> <span class="nn">utils.compute_ndvi</span> <span class="kn">import</span> <span class="n">compute_ndvi_score</span>
+<span class="kn">from</span> <span class="nn">config.app_config</span> <span class="kn">import</span> <span class="n">RULE_ENGINE_WEIGHTAGE</span><span class="p">,</span> <span class="n">LOAN_RISK_SCORE</span><span class="p">,</span> <span class="n">MIN_NVDI_SCORE</span><span class="p">,</span> <span class="n">MIN_CRA_SCORE</span><span class="p">,</span> <span class="n">MIN_LCR_SCORE</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>RuleEnigne decides the risk factor of the loan application</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span class="k">class</span> <span class="nc">RuleEngine</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>:param loan_obj: Loan Object which contains the loan application details</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loan_obj</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="bp">self</span><span class="o">.</span><span class="n">loan_obj</span> <span class="o">=</span> <span class="n">loan_obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span> <span class="o">=</span> <span class="n">loan_obj</span><span class="o">.</span><span class="n">aadhar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span> <span class="o">=</span> <span class="n">loan_obj</span><span class="o">.</span><span class="n">land_coordinates</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Get CRA Score for the given Aadhar
+:param aadhar: Aadhar ID
+:return: CRA Score</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_cra_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aadhar</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">return</span> <span class="n">mock_cra_score</span><span class="p">(</span><span class="n">aadhar</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Get LCR score for the given Aadhar
+:param aadhar: Aadhar ID
+:return: LCR Score</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_lcr_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aadhar</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">return</span> <span class="n">mock_lcr_score</span><span class="p">(</span><span class="n">aadhar</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>GET NDVI score for the given land coordinates
+:param land_coordinates: Land coordinates
+:return: NDVI Score</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_ndvi_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">land_coordinates</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">return</span> <span class="n">compute_ndvi_score</span><span class="p">(</span><span class="n">land_coordinates</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>Compute the risk details for the given loan application
+:return: risk details
+        {&lsquo;cra_score&rsquo;: 226.79999999999998,
+          &lsquo;credit_score&rsquo;: 615.2951998436262,
+          &lsquo;lcr_score&rsquo;: 149.20000000000002,
+          &lsquo;ndvi_score&rsquo;: 239.2951998436262,
+          &lsquo;risk_reason&rsquo;: None,
+          &lsquo;risk_status&rsquo;: False
+        }</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="k">def</span> <span class="nf">get_risk_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">risk_obj</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;risk_status&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;risk_reason&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;credit_score&quot;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>GET NDVI, CRA and LCR score</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">ndvi_score</span> <span class="o">=</span> <span class="n">RULE_ENGINE_WEIGHTAGE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;NDVI_WGT&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_ndvi_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">land_coordinates</span><span class="p">)</span>
+        <span class="n">cra_score</span> <span class="o">=</span> <span class="n">RULE_ENGINE_WEIGHTAGE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CRA_WGT&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cra_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span><span class="p">)</span>
+        <span class="n">lcr_score</span> <span class="o">=</span> <span class="n">RULE_ENGINE_WEIGHTAGE</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;LCR_WGT&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_lcr_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aadhar</span><span class="p">)</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>Compute the final credit score by adding nvdi, cra and lsr scores along with the configured weightage</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;credit_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ndvi_score</span> <span class="o">+</span> <span class="n">cra_score</span> <span class="o">+</span> <span class="n">lcr_score</span>
+        <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;ndvi_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ndvi_score</span>
+        <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;cra_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cra_score</span>
+        <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;lcr_score&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lcr_score</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>If NDVI score is less than the minimum required value application&rsquo;s risk_status is set to True</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">ndvi_score</span> <span class="o">&lt;</span> <span class="n">MIN_NVDI_SCORE</span><span class="p">:</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_reason&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Bad NDVI score&quot;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>If CRA score is less than the minimum required value application&rsquo;s risk_status is set to True</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">cra_score</span> <span class="o">&lt;</span> <span class="n">MIN_CRA_SCORE</span><span class="p">:</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_reason&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Bad CRA Score&quot;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>If LCR score is less than the minimum required value application&rsquo;s risk_status is set to True</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">lcr_score</span> <span class="o">&lt;</span> <span class="n">MIN_LCR_SCORE</span><span class="p">:</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_reason&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Bad CRA Score&quot;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      <p>If computed credit score is less than the minimum required value application&rsquo;s risk_status is set to True</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="k">if</span> <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;credit_score&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">LOAN_RISK_SCORE</span><span class="p">:</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">risk_obj</span><span class="p">[</span><span class="s2">&quot;risk_reason&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Bad Credit score&quot;</span>
+        <span class="k">return</span> <span class="n">risk_obj</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
