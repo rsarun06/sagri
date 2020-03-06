@@ -26,7 +26,7 @@ def compute_ndvi_score(land_coordinates):
     # This is similar to zooming in the map to ge the appropriate metric range for computation
     n = 1
     x = np.arange(np.floor(xmin * n)/n, np.ceil(xmax * n)/n, 1/n)
-    y = np.arange(np.floor(ymin * n)/n, np.ceil(ymax * n)/n, /n)
+    y = np.arange(np.floor(ymin * n)/n, np.ceil(ymax * n)/n, 1/n)
     points = MultiPoint(np.transpose([np.tile(x, len(y)), np.repeat(y, len(x))]))
     coordinates_inside_land = [(p.x, p.y) for p in points]
     total_no_coordinates_in_land = len(coordinates_inside_land)
