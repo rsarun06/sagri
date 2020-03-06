@@ -2,9 +2,6 @@
 
 One Paragraph of project description goes here
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -19,7 +16,7 @@ Do the following in a virtual environment.
 pip3 install -r devops/requirements.txt
 ```
 
-To Run the script
+To execute the script, go to `sagri/src` and enter the below command.
 
 ```
 python3 src/apply_loan.py
